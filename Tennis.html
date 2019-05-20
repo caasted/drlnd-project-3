@@ -13465,17 +13465,17 @@ The state for the first agent looks like: [ 0.          0.          0.          
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">Episode </span><span class="si">{}</span><span class="se">\t</span><span class="s1">Average Max Score: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_episode</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores_deque</span><span class="p">)))</span>
             <span class="k">for</span> <span class="n">a_i</span><span class="p">,</span> <span class="n">agent</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">agents</span><span class="p">):</span>
                 <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">actor_local</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;checkpoints/checkpoint_actor_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.pth&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span><span class="p">))</span>
+                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span> <span class="o">+</span> <span class="n">previous_episodes</span><span class="p">))</span>
                 <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">critic_local</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;checkpoints/checkpoint_critic_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.pth&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span><span class="p">))</span>
+                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span> <span class="o">+</span> <span class="n">previous_episodes</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">i_episode</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores_deque</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Environment solved in </span><span class="si">{}</span><span class="s1"> episodes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">previous_episodes</span> <span class="o">+</span> <span class="n">i_episode</span> <span class="o">-</span> <span class="mi">100</span><span class="p">))</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Episode </span><span class="si">{}</span><span class="se">\t</span><span class="s1">Average Max Score: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i_episode</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores_deque</span><span class="p">)))</span>
             <span class="k">for</span> <span class="n">a_i</span><span class="p">,</span> <span class="n">agent</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">agents</span><span class="p">):</span>
                 <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">actor_local</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;checkpoints/checkpoint_actor_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.pth&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span><span class="p">))</span>
+                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span> <span class="o">+</span> <span class="n">previous_episodes</span><span class="p">))</span>
                 <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">critic_local</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;checkpoints/checkpoint_critic_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.pth&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span><span class="p">))</span>
+                    <span class="n">a_i</span><span class="p">,</span> <span class="n">i_episode</span> <span class="o">+</span> <span class="n">previous_episodes</span><span class="p">))</span>
             <span class="k">break</span>
             
     <span class="k">return</span> <span class="n">scores_history</span>
@@ -13659,7 +13659,7 @@ Episode 101	Average Max Score: 1.38
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">run_agent</span><span class="p">():</span>
@@ -13691,11 +13691,11 @@ Episode 101	Average Max Score: 1.38
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load agents for demonstration</span>
-<span class="n">load_agents</span><span class="p">(</span><span class="n">episode</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span>
+<span class="n">load_agents</span><span class="p">(</span><span class="n">episode</span><span class="o">=</span><span class="mi">4100</span><span class="p">)</span>
 
 <span class="c1"># Watch the trained agents</span>
 <span class="n">run_agent</span><span class="p">()</span>
@@ -13715,8 +13715,8 @@ Episode 101	Average Max Score: 1.38
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Ball lost at step: 336.00, Agent 0 score: 0.90, Agent 1 score: 0.79
-Highest score this episode: 0.90
+<pre>Ball lost at step: 1001.00, Agent 0 score: 2.60, Agent 1 score: 2.60
+Highest score this episode: 2.60
 </pre>
 </div>
 </div>
@@ -13727,7 +13727,7 @@ Highest score this episode: 0.90
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
