@@ -56,10 +56,14 @@ Same as the Actors, but with a single output node with a linear activation funct
 
 ## Plot of Rewards
 
-![Rewards Plot][image1]
+![Scores Plot][image1]
 
-The average score, across 100 episodes and the highest of the two agents at each episode, exceeded 0.5 after 3000 episodes of training for only 20 steps. After 3000 episodes, the performance of the agents was validated by running the Tennis environment for up to 1000 steps for 100 episodes in order to establish the true performance of the agents, since the 20-step scores are significantly truncated.
+The average score, across 100 episodes and the highest of the two agents at each episode, reached 1.38 after 4000 episodes of training for only 20 steps. After 4000 episodes, the performance of the agents was validated by running the Tennis environment for up to 1000 steps for 100 episodes in order to establish the true performance of the agents, since the 20-step scores are significantly truncated.
 
 ## Ideas for Future Work
 
-While the agents were able to substantially exceed the solved condition for the network, the possilbity exists to continue training until they are able to reach the environment's terminal done condition without dropping the ball, maximizing the potential score. My current solution did not require any in-depth hyperparameter tuning or model architecture exploration, since it solved the problem using settings that were close to those I used in Project 2. Therefore, it is likely possible to improve the agent's performance by experimenting with different model architectures and hyperparameter values. The largest opportunity for improvement would be to utilize the experiences of both agents to train each agent, but mirroring the appropriate state variables. There is also potential for reward shaping in order to deliberately hit the ball towards the other agent's position, however, that didn't seem necessary since the current reward shaping already influences the individual agents to hit the ball into an area where it can be returned from.
+While the agents were able to substantially exceed the solved condition for the network, the possilbity exists to continue training until they are able to consitently reach the environment's terminal done condition without dropping the ball, maximizing the potential score, which appears to be about 2.6 based on the agents' peak performance.
+
+My current solution did not require any in-depth hyperparameter tuning or model architecture exploration, since it solved the problem using settings that were close to those I used in Project 2. Therefore, it is likely possible to improve the agent's performance, or at least reduce the training time, by experimenting with different model architectures and hyperparameter values.
+
+The largest opportunity for improvement would be to utilize the experiences of both agents to train each agent, but mirroring the appropriate state variables. There is also potential for reward shaping in order to deliberately hit the ball towards the other agent's position, however, that didn't seem necessary since the current reward shaping already influences the individual agents to hit the ball into an area where it can be returned from.
